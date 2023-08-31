@@ -20,4 +20,8 @@ type Mutation {
 
     createAuthor(firstName: String!, lastName: String!): Author!
 
+    updateAuthor(authorId: ID!, firstName: String!, lastName: String!): Author!
+
+    deleteAuthor(authorId: ID!): Boolean!
+
 }
