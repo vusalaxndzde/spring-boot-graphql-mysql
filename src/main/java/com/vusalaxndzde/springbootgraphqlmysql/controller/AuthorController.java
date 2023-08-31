@@ -1,11 +1,13 @@
 package com.vusalaxndzde.springbootgraphqlmysql.controller;
 
 import com.vusalaxndzde.springbootgraphqlmysql.entity.Author;
+import com.vusalaxndzde.springbootgraphqlmysql.entity.Book;
 import com.vusalaxndzde.springbootgraphqlmysql.service.AuthorService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.graphql.data.method.annotation.Argument;
 import org.springframework.graphql.data.method.annotation.MutationMapping;
 import org.springframework.graphql.data.method.annotation.QueryMapping;
+import org.springframework.graphql.data.method.annotation.SchemaMapping;
 import org.springframework.stereotype.Controller;
 
 import java.util.List;
@@ -44,6 +46,11 @@ public class AuthorController {
     @MutationMapping
     public boolean deleteAuthor(@Argument long authorId) {
         return authorService.deleteAuthor(authorId);
+    }
+
+    @SchemaMapping(typeName = "Query", field = "authors")
+    public List<Author> getAuthors() {
+        return authorService.authors();
     }
 
 }

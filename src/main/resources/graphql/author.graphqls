@@ -10,6 +10,8 @@ type Query {
 
     findAllAuthors: [Author]!
 
+    authors: [Author]!
+
     findAuthorByAuthorId(authorId: ID!): Author!
 
     countAuthors: Int!

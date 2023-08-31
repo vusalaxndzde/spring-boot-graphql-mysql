@@ -1,6 +1,7 @@
 package com.vusalaxndzde.springbootgraphqlmysql.service;
 
 import com.vusalaxndzde.springbootgraphqlmysql.entity.Author;
+import com.vusalaxndzde.springbootgraphqlmysql.entity.Book;
 import com.vusalaxndzde.springbootgraphqlmysql.repository.AuthorRepository;
 import com.vusalaxndzde.springbootgraphqlmysql.repository.BookRepository;
 import lombok.RequiredArgsConstructor;
@@ -21,6 +22,10 @@ public class AuthorService {
 
     public Author findAuthorByAuthorId(long authorId) {
         return authorRepository.findById(authorId).orElseThrow();
+    }
+
+    public Author findAuthorByBook(Book book) {
+        return authorRepository.findById(book.getAuthor().getId()).orElseThrow();
     }
 
     public int countAuthors() {
@@ -53,6 +58,10 @@ public class AuthorService {
         authorRepository.delete(author);
 
         return true;
+    }
+
+    public List<Author> authors() {
+        return authorRepository.findAll();
     }
 
 }
