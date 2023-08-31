@@ -32,8 +32,13 @@ public class BookController {
     }
 
     @MutationMapping
-    public Book createBook(@Argument String name, @Argument int pageCount, @Argument long authorId) {
+    public Book createBook(@Argument String name, @Argument int pageCount, @Argument Long authorId) {
         return bookService.createBook(name, pageCount, authorId);
+    }
+
+    @MutationMapping
+    public Book updateBook(@Argument long bookId, @Argument String name, @Argument int pageCount, @Argument Integer authorId) {
+        return bookService.updateBook(bookId, name, pageCount, authorId);
     }
 
     @MutationMapping

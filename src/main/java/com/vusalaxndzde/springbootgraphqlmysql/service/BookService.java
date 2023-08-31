@@ -27,14 +27,30 @@ public class BookService {
         return bookRepository.findAll().size();
     }
 
-    public Book createBook(String name, int pageCount, long authorId) {
-        Author author = authorService.findAuthorByAuthorId(authorId);
+    public Book createBook(String name, int pageCount, Long authorId) {
+        Author author = null;
+        if (authorId != null) {
+            author = authorService.findAuthorByAuthorId(authorId);
+        }
 
         Book book = Book.builder()
                 .name(name)
                 .pageCount(pageCount)
                 .author(author)
                 .build();
+
+        return bookRepository.save(book);
+    }
+
+    public Book updateBook(long bookId, String name, int pageCount, Integer authorId) {
+        Book book = bookRepository.findById(bookId).orElseThrow();
+        book.setName(name);
+        book.setPageCount(pageCount);
+
+        if (authorId != null) {
+            Author author = authorService.findAuthorByAuthorId(authorId);
+            book.setAuthor(author);
+        }
 
         return bookRepository.save(book);
     }
