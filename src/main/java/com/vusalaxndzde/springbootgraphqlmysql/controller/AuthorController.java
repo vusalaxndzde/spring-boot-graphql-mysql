@@ -1,7 +1,6 @@
 package com.vusalaxndzde.springbootgraphqlmysql.controller;
 
 import com.vusalaxndzde.springbootgraphqlmysql.entity.Author;
-import com.vusalaxndzde.springbootgraphqlmysql.entity.Book;
 import com.vusalaxndzde.springbootgraphqlmysql.service.AuthorService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.graphql.data.method.annotation.Argument;
